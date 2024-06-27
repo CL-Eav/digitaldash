@@ -220,7 +220,17 @@ node_modules
 /functions
 /.svelte-kit
 /build
+/kivy_venv
 
 frontend/.svelte-kit/
 
 /frontend/ke.db
+kivy-deps-build/build_linux_dependencies.sh
+kivy-deps-build/kivy-dependencies/download/libpng-1.6.40.tar.gz
+kivy-deps-build/kivy-dependencies/download/SDL2_image-2.6.3.tar.gz
+kivy-deps-build/kivy-dependencies/download/SDL2_mixer-2.6.3.tar.gz
+kivy-deps-build/kivy-dependencies/download/SDL2_ttf-2.20.2.tar.gz
+kivy-deps-build/kivy-dependencies/download/SDL2-2.26.4.tar.gz
+libdigitaldash/libdigitaldash/libdigitaldash.cpython-310-x86_64-linux-gnu.so
+libdigitaldash/libdigitaldash/libdigitaldash.cpython-311-x86_64-linux-gnu.so
+build_linux_dependencies.sh
