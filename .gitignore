@@ -235,3 +235,4 @@ libdigitaldash/libdigitaldash/libdigitaldash.cpython-310-x86_64-linux-gnu.so
 libdigitaldash/libdigitaldash/libdigitaldash.cpython-311-x86_64-linux-gnu.so
 build_linux_dependencies.sh
 /kivy_venv
+/kivy-deps-build/

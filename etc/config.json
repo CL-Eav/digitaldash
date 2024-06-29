@@ -11,8 +11,8 @@
         },
         {
           "theme": "Digital",
-          "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x0105"
+          "unit": "PID_UNITS_PERCENT",
+          "pid": "0x0104"
         },
         {
           "theme": "Stock RS",
@@ -22,11 +22,11 @@
       ],
       "alerts": [
         {
-          "message": "SHIFT",
+          "message": "Change Gear!!!!",
           "op": ">=",
           "priority": "0",
           "unit": "PID_UNITS_RPM",
-          "value": "6000",
+          "value": "7000",
           "pid": "0x010C"
         }
       ],
@@ -34,9 +34,9 @@
       "background": "Carbon Fiber.png",
       "dynamic": {
         "pid": "0x0105",
-        "op": "<=",
+        "op": ">=",
         "enabled": "on",
-        "value": "70",
+        "value": "100",
         "priority": "0",
         "unit": "PID_UNITS_CELSIUS"
       },
