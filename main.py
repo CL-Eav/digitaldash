@@ -34,7 +34,7 @@ for o, arg in opts:
     if o in ("-d", "--development"):
         sys.argv = ["main.py -m console"]
     elif o in ("-f", "--file"):
-        dataSource = Test(file="tests/data/rpm_increasing.csv")
+        dataSource = Test(file=arg)
     elif o in ("-t", "--test"):
         TESTING = True
     elif o in ("-c", "--config"):

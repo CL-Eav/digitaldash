@@ -1,0 +1,81 @@
+{
+  "views": {
+    "0": {
+      "enabled": true,
+      "default": "on",
+      "gauges": [
+        {
+          "theme" : "Stock RS",
+          "pid" : "0x010C",
+          "unit" : "PID_UNITS_RPM"
+        },
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_PSI",
+          "pid": "0xC16F"
+        },
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x22F43C"
+        }
+      ],
+      "alerts": [
+        {
+          "message": "Shift!",
+          "op": ">=",
+          "priority": "0",
+          "unit": "PID_UNITS_RPM",
+          "value": "6500",
+          "pid": "0x010C",
+          "font_size": 80
+        }
+      ],
+      "name": "Daily Driver",
+      "background": "Carbon Fiber.png",
+      "dynamic": {
+        "pid": "0xC10302",
+        "op": ">=",
+        "enabled": "on",
+        "value": "1",
+        "priority": "0",
+        "unit": "PID_UNITS_NONE"
+      },
+      "dynamicMinMax": "on"
+    },
+    "1": {
+      "enabled": false,
+      "default": null,
+      "gauges": [
+        {
+          "theme": "Bar (Aura)",
+          "unit": "PID_UNITS_PSI",
+          "pid": "0xC16F"
+        }
+      ],
+      "alerts": [
+        {
+          "message": "Shift!",
+          "op": ">=",
+          "priority": "0",
+          "unit": "PID_UNITS_RPM",
+          "value": "9000",
+          "pid": "0x010C",
+          "font_size": 80
+        }
+      ],
+      "name": "Boost",
+      "background": "Carbon Fiber.png",
+      "dynamic": {
+        "pid": "0x22F43C",
+        "op": ">=",
+        "enabled": "on",
+        "value": "700",
+        "priority": "10",
+        "unit": "PID_UNITS_CELSIUS"
+      },
+      "dynamicMinMax": "on"
+    }
+
+  }
+}

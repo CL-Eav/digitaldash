@@ -66,10 +66,20 @@ class Needle:
         self.setStep()
 
     def setColor(self):
-        color = 0.7 - (
+        if self.pid.value == '0x0105' :  #specifically for Coolant Temp
+            if self.trueValue < 50 :
+                self.color = (0,0,1,1) #blue 
+            elif self.trueValue > 51 and self.trueValue < 100 :
+                self.color = (0,1,0,1) #green
+            elif self.trueValue > 100 and self.trueValue < 120:
+                self.color = (1,1,0,1) #yellow
+            elif self.trueValue > 120 :
+                self.color = (1,0,0,1) #red
+        else:    
+            color = 0.7 - (
             (self.trueValue - self.minValue) * (0.7) / (self.valueRange)
-        )
-        self.color = tuple(Color(color, 1, 1, mode="hsv").rgba)
+            )
+            self.color = tuple(Color(color, 1, 1, mode="hsv").rgba)
 
     def setData(self, value=0) -> None:
         """

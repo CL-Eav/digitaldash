@@ -5,7 +5,11 @@
   export let view: View;
   export let themes: string[];
 
-  let theme: string = view.gauges[0] ? view.gauges[0].theme : "";
+  // Updated to allow for seperate theme per gauge   @Cl_eav 17/12/23
+  let theme: string[] = []; 
+  for (let i = 0; i < 3; i++) {
+    theme[i] = view.gauges[i] ? view.gauges[i].theme : "";
+  } 
 </script>
 
 <h4>Basics</h4>
@@ -59,7 +63,7 @@
       </select>
     </div>
 
-    <div class="col-6">
+    <!-- <div class="col-6">
       <label for="theme">Theme</label>
       <select
         value={theme}
@@ -72,7 +76,7 @@
           <option value={theme}>{theme}</option>
         {/each}
       </select>
-    </div>
+    </div> -->
   </div>
 
   <div class="col-12">
@@ -91,6 +95,29 @@
       {/each}
     </div>
   </div>
+  <!-- extra section to set theme per guage  @Cl_eav 17/12/23-->
+  <div class="col-12">
+    <!-- svelte-ignore a11y-label-has-associated-control -->
+    <label>Theme</label>
+    <div class="row">
+      {#each Array(3) as _, i}
+        <div class="col-4">
+          <div class="col-12">
+          <select
+          value={theme[i]}
+          name="basics-theme{i}"
+          class="m-1 form-control"
+          id="theme{i}"
+        >
+        {#each themes as theme}
+          <option value={theme}>{theme}</option>
+        {/each}
+        </select>    
+      </div>
+      </div>
+      {/each}
+    </div>
+  </div>  
 </div>
 
 <div class="col-12">

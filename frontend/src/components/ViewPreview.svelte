@@ -24,7 +24,7 @@
 <form
     method="POST"
     action="?/toggle_enabled"
-    class="container col-sm-10 col-md-6 pr-4 pl-4"
+    class="container col-sm-12 pr-4 pl-4"
     use:enhance={() => {
     return async ({ result }) => {
         handleFormSubmissionResults(result);
@@ -38,7 +38,7 @@
         type="hidden"
     />
     
-    <div class="row m-2">
+    <div class="row m-3">
         <div class="text-left col-6">
         <h5>{view.name}</h5>
         {#if view.default}
@@ -59,28 +59,48 @@
     </div>
 
     <a href="/edit/{id}">
-        <div class="card transparent">
+        <div class="col-md-12 card transparent" style="width:500px">
         <img
             class="background-preview"
             src="images/Background/{view.background}"
-            alt="view background"
+            alt="view background {view.background}"
         />
-
-        <div class="row card-img-overlay">
-            <div class="col-6 text-left">
+    
+        <div class="card-img-top">
             {#if view.gauges[0]}
                 <img
-                class="m-4 image-overlay my-auto"
+                class="m-1 card-img-overlay" style=width:33%
                 src="images/{view.gauges[0].theme}/preview.png"
                 alt="gauge preview"
                 />
             {/if}
-            </div>
+        </div>
 
-            <div class="col-6 d-flex flex-column justify-content-center">
+        <div class="card-img-top">
+            {#if view.gauges[1]}
+                <img
+                class="m-1 card-img-overlay" style="left:33%; width:33%"
+                src="images/{view.gauges[1].theme}/preview.png"
+                alt="gauge preview"
+                />
+            {/if}
+        </div>
+
+        <div class="card-img-top">
+            {#if view.gauges[2]}
+            <img
+            class="m-1 card-img-overlay" style="left:66%; width:33%"
+            src="images/{view.gauges[2].theme}/preview.png"
+            alt="gauge preview"
+            />
+            {/if}
+        </div> 
+<p></p>
+        <!-- <div class="col-4 d-flex flex-column justify-content-center"> -->
+            <div class="m-1 row">
             {#each view.gauges as gauge}
                 {#if gauge && gauge.pid}
-                <div class="text-center">
+                <div class="col-4 text-center">
                     <p class="pid">
                     {KE_PIDS[gauge.pid]
                         ? KE_PIDS[gauge.pid].shortName
@@ -93,13 +113,13 @@
             {/each}
             </div>
         </div>
-        </div>
     </a>
 </form>
 
 <style>
     img {
       border-radius: 25px;
+      overflow: hidden;
     }
     .transparent {
       border: transparent;
@@ -107,30 +127,20 @@
     }
   
     .pid {
-      background-color: #ff4d4d;
+      background-color: #068efc;
       border-radius: 0.5em;
       padding: 2px;
       color: white;
-      font-size: calc(100% + 1.1vw);
+      font-size: calc(75% + 1.0vw);
     }
   
-    .image-overlay {
-      width: 50%;
-      position: absolute;
-      top: 25%;
-      right: 0;
-      bottom: 25%;
-      left: 0;
-      padding: 1rem;
-      border-radius: calc(0.25rem - 1px);
-    }
   
     .background-preview {
-      height: 13em;
+      height: 9em;
     }
   
     .card {
-      border-radius: 20px;
+      border-radius: 10px;
       padding: 0.5em;
       margin-top: 1em;
     }

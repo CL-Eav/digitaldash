@@ -1,78 +1,111 @@
 {
-    "views": {
-      "0": {
-        "enabled": true,
-        "default": "on",
-        "gauges": [
-          {
-            "theme": "Stock RS",
-            "unit": "PID_UNITS_FAHRENHEIT",
-            "pid": "0x010F"
-          },
-          {
-            "theme": "Stock RS",
-            "unit": "PID_UNITS_PSI",
-            "pid": "0xC16F"
-          },
-          {
-            "theme": "Stock RS",
-            "unit": "PID_UNITS_FAHRENHEIT",
-            "pid": "0x015C"
-          }
-        ],
-        "alerts": [
-          {
-            "message": "Shift!",
-            "op": ">=",
-            "priority": "0",
-            "unit": "PID_UNITS_RPM",
-            "value": "6500",
-            "pid": "0x010C"
-          }
-        ],
-        "name": "Daily Driver",
-        "background": "Blue Purple Gradient.png",
-        "dynamic": {
-          "pid": "0xC10302",
+  "views": {
+    "0": {
+      "enabled": true,
+      "default": "on",
+      "gauges": [
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_RPM",
+          "pid": "0x010C"
+        },
+        {
+          "theme": "Digital",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x0105"
+        },
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x22F43C"
+        }
+      ],
+      "alerts": [
+        {
+          "message": "SHIFT",
           "op": ">=",
-          "enabled": "on",
-          "value": "1",
           "priority": "0",
-          "unit": "PID_UNITS_NONE"
-        },
-        "dynamicMinMax": "on"
+          "unit": "PID_UNITS_RPM",
+          "value": "6000",
+          "pid": "0x010C"
+        }
+      ],
+      "name": "Daily Driver",
+      "background": "Carbon Fiber.png",
+      "dynamic": {
+        "pid": "0x0105",
+        "op": "<=",
+        "enabled": "on",
+        "value": "70",
+        "priority": "0",
+        "unit": "PID_UNITS_CELSIUS"
       },
-      "1": {
-        "enabled": false,
-        "default": null,
-        "gauges": [
-          {
-            "theme": "Bar (Aura)",
-            "unit": "PID_UNITS_PSI",
-            "pid": "0xC16F"
-          }
-        ],
-        "alerts": [
-          {
-            "message": "Shift!",
-            "op": ">=",
-            "priority": "0",
-            "unit": "PID_UNITS_RPM",
-            "value": "6500",
-            "pid": "0x010C"
-          }
-        ],
-        "name": "Boost",
-        "background": "Blue Purple Gradient.png",
-        "dynamic": {
-          "pid": "0xC10302",
-          "op": "<=",
-          "enabled": "on",
-          "value": "0",
-          "priority": "10",
-          "unit": "PID_UNITS_NONE"
+      "dynamicMinMax": "on"
+    },
+    "1": {
+      "enabled": true,
+      "default": null,
+      "gauges": [
+        {
+          "theme": "Bar (Aura)",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x0105"
+        }
+      ],
+      "alerts": [
+        {
+          "message": "Too Hot",
+          "op": ">",
+          "priority": "1",
+          "unit": "PID_UNITS_CELSIUS",
+          "value": "150",
+          "pid": "0x0105"
+        }
+      ],
+      "name": "HandBrake",
+      "background": "Carbon Fiber.png",
+      "dynamic": {
+        "pid": "0xDE0C82",
+        "op": "=",
+        "enabled": "on",
+        "value": "1",
+        "priority": "0",
+        "unit": "PID_UNITS_NONE"
+      },
+      "dynamicMinMax": "on"
+    },
+    "2": {
+      "enabled": true,
+      "default": null,
+      "gauges": [
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x010F"
         },
-        "dynamicMinMax": "on"
-      }
+        {
+          "theme": "Digital",
+          "unit": "PID_UNITS_PSI",
+          "pid": "0x016F"
+        },
+        {
+          "theme": "Stock RS",
+          "unit": "PID_UNITS_CELSIUS",
+          "pid": "0x2203CA"
+        }
+      ],
+      "alerts": [],
+      "name": "StartUp",
+      "background": "Carbon Fiber.png",
+      "dynamic": {
+        "pid": "0x0105",
+        "op": "<=",
+        "enabled": "on",
+        "value": "70",
+        "priority": "0",
+        "unit": "PID_UNITS_CELSIUS"
+      },
+      "dynamicMinMax": "on"
     }
   }
+}

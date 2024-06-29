@@ -37,7 +37,7 @@
   {#each view.alerts as alert, i}
     <div class="alertContainer">
       <div class="input-group">
-        <div class="col-sm-6 col-12 pl-1 pr-1">
+        <div class="col-12">
           <label class="label" for="alertMessage">Message</label>
           <input
             required
@@ -48,35 +48,7 @@
           />
         </div>
 
-        <div class="col-sm-3 col-12 pl-1 pr-1">
-          <label class="label" for="alertValue">Value</label>
-          <input
-            required
-            value={alert.value}
-            class="form-control"
-            type="number"
-            name="alert-value-{i}"
-          />
-        </div>
-
-        <div class="col-sm-3 col-12 pl-1 pr-1">
-          <label for="alert-op-{i}">Operand</label>
-          <select
-            required
-            value={alert.op}
-            name="alert-op-{i}"
-            class="form-control"
-          >
-            <option value="">-</option>
-            {#each ["=", ">", "<", ">=", "<="] as op}
-              <option value={op}>
-                {op}
-              </option>
-            {/each}
-          </select>
-        </div>
-
-        <div class="col-sm-6 col-12 pl-1 pr-1">
+        <div class="col-sm-6 col-12">
           <label class="label" for="alert-pid-{i}">Parameter</label>
 
           <PID
@@ -87,7 +59,37 @@
           />
         </div>
 
-        <div class="col-sm-3 col-12 pl-1 pr-1">
+        <div class="col-sm-3 col-12">
+          <label for="alert-op-{i}">Operand</label>
+          <select
+            required
+            value={alert.op}
+            name="alert-op-{i}"
+            class="m-1 form-control"
+          >
+            <option value="">-</option>
+            {#each ["=", ">", "<", ">=", "<="] as op}
+              <option value={op}>
+                {op}
+              </option>
+            {/each}
+          </select>
+        </div>
+
+        <div class="col-sm-3 col-12">
+          <label class="label" for="alertValue">Value</label>
+          <input
+            required
+            value={alert.value}
+            class="m-1 form-control"
+            type="number"
+            name="alert-value-{i}"
+          />
+        </div>
+
+
+
+        <div class="col-6">
           <label class="label" for="alert-priority-{i}"
             >Priority <i>(Lower equals higher priority)</i></label
           >
@@ -99,23 +101,30 @@
             name="alert-priority-{i}"
           />
         </div>
-      </div>
+      
 
-      <div class="mt-2 m-2 text-center">
+      <div class="mt-3 m-3 btn">
         <button
           on:click={() => {
             removeAlert(i);
           }}
           class="form-control delete"
-          type="button">Delete</button
-        >
+          type="button" 
+          style="background-color: #ff4d4d; color: white"
+          >Delete Alert
+          </button>
       </div>
     </div>
+  </div>
+  <hr>
   {/each}
 
-  <div class="col-sm-12 m-2 col-auto">
-    <button type="button" class="form-control" on:click={addAlert}
-      >New alert</button
+  <div class="row ">
+    <button 
+    type="button" 
+    style="background-color: blue; color: white" 
+    class="form-control btn btn-full-width" on:click={addAlert}
+      >Add new alert</button
     >
   </div>
 </div>

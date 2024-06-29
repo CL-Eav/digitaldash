@@ -81,8 +81,9 @@ export function NormalizeConfigInput(
     }
 
     // Set default theme across all gauges
+    // Updated now a theme is set per gauge @Cl_eav:17/12/23
     const gauge_obj = {
-      theme: attempt.get("basics-theme"),
+      theme: attempt.get("basics-theme" +i),
     };
     control["gauges"].forEach((item) => {
       gauge_obj[item] = attempt.get("gauge-" + item + "-" + i);

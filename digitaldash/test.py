@@ -55,7 +55,7 @@ class Test:
         keyVal = {}
         i = 0
         for pid in pids:
-            if self.cols >= i:
+            if self.cols == i:
                 i = 0
             keyVal[pid.value] = data[i]
             i = i + 1

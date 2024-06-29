@@ -113,7 +113,7 @@ class KELabel(Label):
                 if self.unitString:
                     self.text = (
                         self.text
-                        + "[size=15]"
+                        + "[size=25]"
                         + " "
                         + self.unitString
                         + "[/size]"
