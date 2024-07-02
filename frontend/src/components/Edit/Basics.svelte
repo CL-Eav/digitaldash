@@ -5,16 +5,20 @@
   export let view: View;
   export let themes: string[];
 
-  // Updated to allow for seperate theme per gauge   @Cl_eav 17/12/23
+  // Updated to allow for individual theme per gauge   @Cl_eav 17/12/23
   let theme: string[] = []; 
   for (let i = 0; i < 3; i++) {
     theme[i] = view.gauges[i] ? view.gauges[i].theme : "";
-  } 
+  }
+  const images = import.meta.glob('/static/images/Background/*.{png,jpg}', { eager: true });
+  const imagePaths = Object.keys(images).map((path) => path.replace('/static/images/Background/', ''));
+
+  //let theme: string = view.gauges[0] ? view.gauges[0].theme : "";
+
 </script>
 
 <h4>Basics</h4>
 <hr />
-
 <div class="basicsContainer">
   <div class="col-12">
     <label for="name">View name</label>
@@ -55,10 +59,8 @@
         required
       >
         <option value="">-</option>
-        {#each ["Black.png", "Blue Purple Gradient.png", "Carbon Fiber.png", "Galaxy.png", "Digital Camo.png", "Flare.png", "Jellyfish.png", "Red.png"] as background}
-          <option value={background}
-            >{background.replace(/\.png|\.jpg/, "")}</option
-          >
+        {#each imagePaths as image}
+          <option value={image}>{image.replace(/\.png|\.jpg/, "")}</option>
         {/each}
       </select>
     </div>
@@ -95,7 +97,7 @@
       {/each}
     </div>
   </div>
-  <!-- extra section to set theme per guage  @Cl_eav 17/12/23-->
+  <!-- extra section to set theme per gauge  @Cl_eav 17/12/23-->
   <div class="col-12">
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>Theme</label>
