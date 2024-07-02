@@ -237,3 +237,4 @@ build_linux_dependencies.sh
 /kivy_venv
 /kivy-deps-build/
 /digitaldash/kivy-deps-build/
+etc/config.json
