@@ -87,8 +87,6 @@
           />
         </div>
 
-
-
         <div class="col-6">
           <label class="label" for="alert-priority-{i}"
             >Priority <i>(Lower equals higher priority)</i></label

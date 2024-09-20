@@ -10,12 +10,15 @@
 
 
 import copy
+import os
 from typing import Any, List
 from kivy.logger import Logger
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import StringProperty
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.video import Video
+from kivy.uix.image import Image
 from kivy.core.window import Window
 
 from etc import config
@@ -47,6 +50,37 @@ class Background(AnchorLayout):
             f"{WorkingPath + '/static/images/Background/'}{BackgroundSource}"
         )
 
+class AsyncAnimatedGif(Image):
+    def __init__(self, source, **kwargs):
+        super().__init__(**kwargs)
+        self.source = source
+        self.frames = []
+        self.frame_index = 0
+        self.texture = None
+        self.stop_event = threading.Event()
+        self.load_thread = threading.Thread(target=self.load_gif)
+        self.load_thread.start()
+
+    def load_gif(self):
+        pil_image = PILImage.open(self.source)
+        self.frames = [frame.copy() for frame in ImageSequence.Iterator(pil_image)]
+        self.texture = Texture.create(size=self.frames[0].size)
+        self.texture.flip_vertical()
+        Clock.schedule_interval(self.update_texture, 0.05)  # Update interval for GIF animation
+
+    def update_texture(self, dt):
+        if not self.frames or self.stop_event.is_set():
+            return
+        frame = self.frames[self.frame_index]
+        frame = frame.convert('RGBA')
+        self.texture.blit_buffer(frame.tobytes(), colorfmt='rgba', bufferfmt='ubyte')
+        self.canvas.ask_update()
+        self.frame_index = (self.frame_index + 1) % len(self.frames)
+
+    def on_touch_down(self, touch):
+        self.stop_event.set()
+        super().on_touch_down(touch)
+
 
 # We want this variable to be shared across views
 PIDS_LIST = []
@@ -55,7 +89,6 @@ PIDS_LIST = []
 def windowWidth():
     """Return window width, we use a function for testing"""
     return Window.width
-
 
 def findPids(view):
     """Find all PIDs in a view"""

@@ -5,29 +5,19 @@
       "default": "on",
       "gauges": [
         {
-          "theme": "Stock RS",
-          "unit": "PID_UNITS_RPM",
-          "pid": "0x010C"
-        },
-        {
-          "theme": "Digital",
-          "unit": "PID_UNITS_PERCENT",
-          "pid": "0x0104"
-        },
-        {
-          "theme": "Stock RS",
+          "theme": "Bar (Aura)",
           "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x22F43C"
+          "pid": "0x0105"
         }
       ],
       "alerts": [
         {
-          "message": "Change Gear!!!!",
-          "op": ">=",
-          "priority": "0",
-          "unit": "PID_UNITS_RPM",
-          "value": "7000",
-          "pid": "0x010C"
+          "message": "Too Hot",
+          "op": ">",
+          "priority": "1",
+          "unit": "PID_UNITS_CELSIUS",
+          "value": "5000",
+          "pid": "0x0105"
         }
       ],
       "name": "Daily Driver",
@@ -55,10 +45,10 @@
       "alerts": [
         {
           "message": "Too Hot",
-          "op": ">",
+          "op": ">=",
           "priority": "1",
           "unit": "PID_UNITS_CELSIUS",
-          "value": "150",
+          "value": "120",
           "pid": "0x0105"
         }
       ],
@@ -75,7 +65,7 @@
       "dynamicMinMax": "on"
     },
     "2": {
-      "enabled": true,
+      "enabled": false,
       "default": null,
       "gauges": [
         {
@@ -107,5 +97,6 @@
       },
       "dynamicMinMax": "on"
     }
-  }
+  },
+  "splash": "Ford Performance.png"
 }

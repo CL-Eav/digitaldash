@@ -60,7 +60,7 @@
       >
         <option value="">-</option>
         {#each imagePaths as image}
-          <option value={image}>{image.replace(/\.png|\.jpg/, "")}</option>
+          <option value={image}>{image.replace(/\.(png|jpg)/, "")}</option>
         {/each}
       </select>
     </div>
