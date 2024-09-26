@@ -1,20 +1,20 @@
 #:kivy 1.0
 
 <Alert>:
-    markup: True
+
     shorten_from: 'right'
     halign: 'center'
     valign: 'middle'
-    size_hint: 1, 1
+    size_hint: 0.85, 0.80
     # This limits text to fit within our alert
     text_size: root.width, None
-    pos_hint: {"center_x": 0.50, "center_y": 0.85}
+    pos_hint: {"center_x": 0.50, "center_y": 0.81}
     canvas.before:
         Color:
-            hsv: self.color
+
             a: 1
         Rectangle:
             id: 'Alert-'+str(self.message)
             size: self.size
             pos: self.pos
-            source: app.working_path+'/static/images/Alerts/FordWarning.png' if hasattr(app, 'working_path') else 'static/images/Alerts/FordWarning.png'
+            source: app.working_path+'/static/images/Alerts/Alert.png' if hasattr(app, 'working_path') else 'static/images/Alerts/Alert.png'
