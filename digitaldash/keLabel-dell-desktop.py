@@ -30,7 +30,7 @@ class KELabel(Label):
         self.default = args.get("default", "")
         self.configColor = args.get("color", (1, 1, 1, 1))  # White
         self.color = self.configColor
-        self.configFontSize = args.get("font_size", 25)
+        self.configFontSize = args.get("font_size", 100)   # Default font size (Alert Message Text)
         self.font_size = self.configFontSize
         self.pid = args.get("pid", None)
         self.decimals = (
@@ -113,7 +113,7 @@ class KELabel(Label):
                 if self.unitString:
                     self.text = (
                         self.text
-                        + "[size=20]"
+                        + "[size=25]"
                         + " "
                         + self.unitString
                         + "[/size]"

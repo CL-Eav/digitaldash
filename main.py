@@ -182,7 +182,7 @@ class GUI(App):
             self.firmware_version = "FW: N/A"
         self.gui_version = f"GUI: {__version__}"
 
-        y_pos = 160
+        y_pos = 20
         if platform == "linux" or platform == "linux2":
             y_pos = 20
         self.version_label = Label(

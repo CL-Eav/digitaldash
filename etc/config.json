@@ -5,30 +5,40 @@
       "default": "on",
       "gauges": [
         {
-          "theme": "Bar (Aura)",
+          "theme": "Digital",
+          "unit": "PID_UNITS_RPM",
+          "pid": "0x010C"
+        },
+        {
+          "theme": "Digital",
+          "unit": "PID_UNITS_PERCENT",
+          "pid": "0x0106"
+        },
+        {
+          "theme": "Stock RS",
           "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x0105"
+          "pid": "0x22F43C"
         }
       ],
       "alerts": [
         {
-          "message": "Too Hot",
+          "message": "S H I F T ! ! ! ",
           "op": ">",
           "priority": "1",
-          "unit": "PID_UNITS_CELSIUS",
+          "unit": "PID_UNITS_RPM",
           "value": "5000",
-          "pid": "0x0105"
+          "pid": "0x010C"
         }
       ],
       "name": "Daily Driver",
       "background": "Carbon Fiber.png",
       "dynamic": {
-        "pid": "0x0105",
-        "op": ">=",
+        "pid": "0xDE0C82",
+        "op": "<",
         "enabled": "on",
-        "value": "100",
+        "value": "4000",
         "priority": "0",
-        "unit": "PID_UNITS_CELSIUS"
+        "unit": "PID_UNITS_NONE"
       },
       "dynamicMinMax": "on"
     },
@@ -39,14 +49,14 @@
         {
           "theme": "Bar (Aura)",
           "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x0105"
+          "pid": "0x010F"
         }
       ],
       "alerts": [
         {
           "message": "Too Hot",
           "op": ">=",
-          "priority": "1",
+          "priority": "0",
           "unit": "PID_UNITS_CELSIUS",
           "value": "120",
           "pid": "0x0105"
@@ -59,7 +69,7 @@
         "op": "=",
         "enabled": "on",
         "value": "1",
-        "priority": "0",
+        "priority": "1",
         "unit": "PID_UNITS_NONE"
       },
       "dynamicMinMax": "on"
@@ -69,31 +79,21 @@
       "default": null,
       "gauges": [
         {
-          "theme": "Stock RS",
+          "theme": "Bar (Aura)",
           "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x010F"
-        },
-        {
-          "theme": "Digital",
-          "unit": "PID_UNITS_PSI",
-          "pid": "0x016F"
-        },
-        {
-          "theme": "Stock RS",
-          "unit": "PID_UNITS_CELSIUS",
-          "pid": "0x2203CA"
+          "pid": "0x0105"
         }
       ],
       "alerts": [],
       "name": "StartUp",
       "background": "Carbon Fiber.png",
       "dynamic": {
-        "pid": "0x0105",
-        "op": "<=",
+        "pid": "0x0111",
+        "op": ">=",
         "enabled": "on",
-        "value": "70",
-        "priority": "0",
-        "unit": "PID_UNITS_CELSIUS"
+        "value": "30",
+        "priority": "1",
+        "unit": "PID_UNITS_PERCENT"
       },
       "dynamicMinMax": "on"
     }

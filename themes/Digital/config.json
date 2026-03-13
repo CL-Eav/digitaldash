@@ -11,7 +11,7 @@
         "pos": [-70, 28], "font_size": 22, "Min": "1", "data": 1, "color": [0.325, 0.671, 1, 1]
         },
         {
-        "pos": [0, 80], "font_size": 80, "default": "",
+        "pos": [0, 80], "font_size": 70, "default": "",
         "data": 1, "color": [0.325, 0.671, 1, 1]
         },
         {
